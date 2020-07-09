@@ -1,1 +1,135 @@
-﻿
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css file -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/theme-color.css">
+    <!-- Responsive stylesheet -->
+    <link rel="stylesheet" href="~/Content/responsive.css">
+    <!-- Title -->
+    <title>DSS - Door Step Solution</title>
+
+    <link rel="stylesheet" href="~/Content/swc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+    <script src="~/Scripts/swc.js"></script>
+</head>
+<body>
+
+    <!-- Inner Pages Main Section -->
+    <section class="ulockd-contact-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <div class="ulockd-main-title">
+                        <h2>Contact Details</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="ulockd-ohour-info style2 mb305-xsd text-center">
+                        <div class="ulockd-icon text-thm2"><span class="fa fa-envelope"></span></div>
+                        <div class="ulockd-info">
+                            <h3>Mail Us</h3>
+                            <p class="ulockd-addrss"><strong>Email:</strong></p>
+                        </div>
+                    </div>
+                    <div class="ulockd-ohour-info style2 text-center">
+                        <div class="ulockd-icon text-thm2"><span class="fa fa-clock-o"></span></div>
+                        <div class="ulockd-info">
+                            <h3>Timing</h3>
+                            <p class="ulockd-addrss">10 AM to 6 PM</p>
+                        </div>
+                    </div>
+                    <div class="ulockd-ohour-info style2 text-center">
+                        <div class="ulockd-icon text-thm2"><span class="fa fa-map-signs"></span></div>
+                        <div class="ulockd-info">
+                            <h3>Address</h3>
+                            <p>Coimbatore, Tamilnadu</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="ulockd-google-map ulockd-style-two">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125323.47388549945!2d76.89719502595452!3d11.011701573544386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859af2f971cb5%3A0x2fc1c81e183ed282!2sCoimbatore%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1567527601067!5m2!1sen!2sin" width="600" height="340" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+                <div class="col-md-12 ulockd-mrgn1225">
+                    <div class="ulockd-contact-form style2">
+                        <form id="contact_form" name="contact_form" class="contact-form" action="includes/contact.php" method="post" novalidate="novalidate">
+                            <div class="messages"></div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input id="form_name" name="form_name" class="form-control ulockd-form-fg required" placeholder="Your name" required="required" data-error="Name is required." type="text">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input id="form_email" name="form_email" class="form-control ulockd-form-fg required email" placeholder="Your email" required="required" data-error="Email is required." type="email">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input id="form_phone" name="form_phone" class="form-control ulockd-form-fg required" placeholder="Phone" required="required" data-error="Phone Number is required." type="text">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input id="form_subject" name="form_subject" class="form-control ulockd-form-fg required" placeholder="Subject" required="required" data-error="Subject is required." type="text">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea id="form_message" name="form_message" class="form-control ulockd-form-tb required" rows="8" placeholder="Your message" required="required" data-error="Message is required."></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group ulockd-contact-btn">
+                                        <input id="form_botcheck" name="form_botcheck" class="form-control" value="" type="hidden">
+                                        <button type="submit" class="btn btn-default btn-lg ulockd-btn-thm2" data-loading-text="Getting Few Sec...">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a class="scrollToHome ulockd-bgthm" href="#"><i class="fa fa-home"></i></a>
+    <!-- Wrapper End -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootsnav.js"></script>
+    <script type="text/javascript" src="~/Scripts/parallax.js"></script>
+    <script type="text/javascript" src="~/Scripts/scrollto.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-scrolltofixed-min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.counterup.js"></script>
+    <script type="text/javascript" src="~/Scripts/gallery.js"></script>
+    <script type="text/javascript" src="~/Scripts/wow.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/slider.js"></script>
+    <script type="text/javascript" src="~/Scripts/video-player.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.barfiller.js"></script>
+    <script type="text/javascript" src="~/Scripts/jflickrfeed.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/timepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/tweetie.js"></script>
+    <script type="text/javascript" src="~/Scripts/validator.js"></script>
+    <script type="text/javascript" src="~/Scripts/form-script.js"></script>
+    <!-- Google Map Javascript Codes -->
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyABqK-5ngi3F1hrEsk7-mCcBPsjHM5_Gj0"></script>
+    <script src="~/Scripts/googlemaps.js"></script>
+    <!-- Custom script for all pages -->
+    <script type="text/javascript" src="~/Scripts/script.js"></script>
+</body>
+</html>
