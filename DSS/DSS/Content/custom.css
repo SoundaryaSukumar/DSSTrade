@@ -1,0 +1,20 @@
+label.error {
+	color : #ed0707 !important;
+	position: absolute;
+}
+.success-cls {
+	color : #199508;
+	font-weight : bold;
+}
+.error-cls {
+	color : #ed0707;
+	font-weight : bold;
+}
+.hidden {
+	display : none;
+}
+
+
+#ui-datepicker-div{
+	width: 34%!important;
+}
