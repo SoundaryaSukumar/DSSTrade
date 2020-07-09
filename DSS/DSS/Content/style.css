@@ -2371,8 +2371,12 @@ section {
   top: 0; }
 
 /* About Css */
+.about_details {
+   color: white
+}
 .ab-thumb {
-  position: relative; }
+    position: relative;
+}
   .ab-thumb img {
     -webkit-transition: all 0.4s ease-in-out 0s;
     -o-transition: all 0.4s ease-in-out 0s;
@@ -2585,14 +2589,14 @@ section {
   bottom: -25px;
   transform: rotate(-90deg);
 }
-.service_box .title{
-  display: block;
-  color: #eae9e9;
-  text-transform: uppercase;
-  margin: 0 0 12px 0;
-  position: relative;
-    font-size: 22px;
-}
+    .service_box .title {
+        display: block;
+        color: #eae9e9;
+        text-transform: uppercase;
+        margin: 0 0 12px 0;
+        position: relative;
+        font-size: 22px;
+    }
 .service_box .details{
   color: #b1aeae;
   margin: 0;
