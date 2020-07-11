@@ -1,0 +1,637 @@
+﻿<html dir="ltr" lang="en" class="js no-touch csstransitions">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css file -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/dark.css">
+    <!-- Responsive stylesheet -->
+    <link rel="stylesheet" href="~/Content/responsive.css">
+    <!-- Title -->
+    <title>FINCASH TRADE</title>
+    <!-- Favicon -->
+    <link href="admin/uploads/general-setting/favicon5e45ab001bde8.jpg" sizes="128x128" rel="shortcut icon" type="image/x-icon">
+    <!-- custom css-->
+    <link href="admin/assets/css/custom.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/nuX0GNR875hMLA1LR7ayD9tc/recaptcha__en_gb.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <!--google recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script src="js/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="css/sweetalert.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper">
+            <!--<div class="header-top style2 ulockd-bgthm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="welcm-ht ulockdtxt">
+                                <ul class="list-inline ulockd-mrgn60">
+                                    <li class="ulockd-welcntxt color-white"> <strong class="fa fa-phone"></strong>NIL</li>
+                                    <li class="ulockd-welcntxt color-white"> <strong class="fa fa-envelope"></strong>admin@fincashtrade.in</li>
+                                    <!--<li class="ulockd-welcntxt color-white"> <strong class="fa fa-skype"></strong> yourdomain</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="welcm-ht text-right">
+                                <ul class="list-inline footer-font-icon ulockd-mrgn125 marbtm-3">
+                                                            <li><a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a target="_blank" href=""><i class="fa fa-google"></i></a></li>
+                                                            <li><a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a target="_blank" href="https://linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                                                        </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Styles -->
+            <header class="header-nav">
+                <div class="main-header-nav navbar-scrolltofixed scroll-to-fixed-fixed" style="z-index: 1000; position: fixed; top: 0px; margin-left: 0px; width: 1423px; left: 0px;">
+                    <div class="container">
+                        <nav class="navbar navbar-default bootsnav menu-style1 on no-full">
+                            <!-- Start Top Search -->
+                            <div class="top-search">
+                                <div class="container">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Top Search -->
+                            <div class="container ulockd-pdng0">
+                                <div class="attr-nav">
+                                    <!-- <ul>
+                                                                     <li><a href="user-dashboard.php" class="btn btn-xs ulockd-btn-white"> My Account</a></li>
+                                         <li><a href="logout.php" class="btn btn-xs ulockd-btn-white"> Logout</a></li>
+                                                                 </ul>-->
+                                </div>
+                                <!-- End Atribute Navigation -->
+                                <!-- Start Header Navigation -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                        <i style="color:black;" class="fa fa-bars"></i>
+                                    </button>
+                                    <a class="navbar-brand ulockd-main-logo2" href="index.php">
+                                        <img src="admin/uploads/general-setting/logo5e45b8a49e744.jpg" class="logo logo-scrolled" alt="FINCASH TRADE">
+                                    </a>
+                                </div>
+                                <!-- End Header Navigation -->
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <!--<div  class="collapse navbar-collapse" id="home-menu" style="display:none;">
+                                    <div class="col-md-2">
+                                        <div id="sidebar" >
+                                          <ul class="list-unstyled menu-categories" id="accordionExample">
+                                            <li class="menu">
+                                                <a href="index.php"  class="dropdown-toggle">
+                                                    <div class="">
+                                                        <i class="fa fa-tachometer "></i>
+                                                        <span>Home</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu">
+                                                <a href="about-us.php" class="dropdown-toggle">
+                                                    <div class="">
+                                                        <i class="flaticon-coins"></i>
+                                                        <span>About Us</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu">
+                                                <a href="contact-us.php" class="dropdown-toggle">
+                                                    <div class="">
+                                                        <i class="flaticon-coins"></i>
+                                                        <span>Contact Us</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu">
+                                                <a href="login.php" class="dropdown-toggle">
+                                                    <div class="">
+                                                        <i class="flaticon-coins"></i>
+                                                        <span>Sign In</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu">
+                                                <a href="register.php" class="dropdown-toggle">
+                                                    <div class="">
+                                                        <i class="flaticon-coins"></i>
+                                                        <span>Sign Up</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="collapse navbar-collapse" id="home-menu">
+                                    <ul class="nav navbar-nav navbar-right" data-in="fadeIn">
+                                        <li class="">
+
+                                            <a href="index.php" class="active">Home</a>
+
+                                        </li>
+
+                                        <li class="">
+
+                                            <a href="about-us.php" class="">About Us</a>
+
+                                        </li>
+                                        <li class="">
+
+                                            <a href="login.php" class="">Sign In</a>
+
+                                        </li>
+
+                                        <li class="">
+                                            <a href="register.php" class="">Sign Up</a>
+
+                                        </li>
+
+                                        <li class="">
+
+                                            <a href="contact-us.php" class="">Contact US</a>
+
+                                        </li>
+                                    </ul>
+
+                                </div><!-- /.navbar-collapse -->
+
+                            </div>
+                        </nav>
+                    </div>
+                </div><div style="display: block; width: 1423.33px; height: 79px; float: none;"></div>
+            </header>
+            <!--<script>
+            $("#hmenu").click(function(){
+                $("#leftmenu").css('display', 'block');
+                $("#hmenu").css('display', 'none');
+            });
+            </script>-->
+            <!-- Inner Pages Main Section -->
+            <section class="ulockd-service-details inner-bg inner-sect">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <span id="lmenu" style="display:none;">
+                                <button class="btn btn-lg btn-gradient-danger btn-block btn-rounded mb-2 mt-4">Click To See Menus</button>
+                            </span>
+                            <span class="collapse navbar-collapse" id="navbar-menu">
+                                <div id="sidebar">
+                                    <ul class="list-unstyled menu-categories" id="accordionExample">
+                                        <li class="menu">
+                                            <a href="user-dashboard.php" class="dropdown-toggle ">
+                                                <div class="">
+                                                    <i class="fa fa-tachometer "></i>
+                                                    <span>Dashboard</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="#profile" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                                                <div class="">
+                                                    <i class="flaticon-person "></i>
+                                                    <span>Profile</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                            <ul class="collapse submenu list-unstyled in" id="profile" data-parent="#accordionExample">
+                                                <li class="">
+                                                    <a href="my-profile.php"> My Profile </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="edit-profile.php"> Edit Profile </a>
+                                                </li>
+                                                <li class="active">
+                                                    <a href="bank-details.php"> Bank Details </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="change-picture.php"> Change Picture </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="change-password.php"> Change Password </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="my-investment.php" class="dropdown-toggle ">
+                                                <div class="">
+                                                    <i class="flaticon-coins"></i>
+                                                    <span>My Investment</span>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="menu">
+                                            <a href="package-upgrade.php" class="dropdown-toggle ">
+                                                <div class="">
+                                                    <i class="flaticon-coins"></i>
+                                                    <span>Investment Packages</span>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                        <li class="menu">
+                                            <a href="#epin" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                                                <div class="">
+                                                    <i class="flaticon-person "></i>
+                                                    <span>Epin</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                            <ul class="collapse submenu list-unstyled " id="epin" data-parent="#accordionExample">
+                                                <li class="">
+                                                    <a href="epin-purchased.php">Purchased Epins </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="withdrawal.php" class="dropdown-toggle ">
+                                                <div class="">
+                                                    <i class="flaticon-save-money-in-moneybox"></i>
+                                                    <span>Withdrawal</span>
+                                                </div>
+
+                                            </a>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="geneaology.php" class="dropdown-toggle ">
+                                                <div class="">
+                                                    <i class="fa fa-sitemap"></i>
+                                                    <span>Downline Users List</span>
+                                                </div>
+
+                                            </a>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="#payout" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                                                <div class="">
+                                                    <i class="flaticon-person "></i>
+                                                    <span>Payout</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                            <ul class="collapse submenu list-unstyled " id="payout" data-parent="#accordionExample">
+                                                <li class="">
+                                                    <a href="referral-payout.php">Direct Income </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="level-payout.php">Team Bonus </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="roi-payout.php">ROI Payout </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="#mail" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                                <div class="">
+                                                    <i class="flaticon-email-filled-closed-envelope"></i>
+                                                    <span>Mailing System</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                            <ul class="collapse submenu list-unstyled " id="mail" data-parent="#accordionExample">
+                                                <li class="">
+                                                    <a href="mail-inbox.php"> Inbox </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="mail-compose.php"> Compose  </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="mail-outbox.php"> Outbox </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="mail-forward.php"> Forward Mail </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="mail-read.php"> Read Mail </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="mail-unread.php">Unread Mail </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu">
+                                            <a href="logout.php" class="dropdown-toggle">
+                                                <div class="">
+                                                    <i class="fa fa-sign-out"></i>
+                                                    <span>Logout</span>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </span>
+                        </div>
+
+
+                        <script>
+$("#lmenu").click(function(){
+	$("#leftmenu").css('display', 'block');
+	$("#lmenu").css('display', 'none');
+});
+                        </script>			<div class="col-md-9">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-header">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                        <h4>
+                                                            Bank Details
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content widget-content-area">
+                                                <form name="usrbnkfrm" method="post" action="user-detail-sub.php" novalidate="novalidate">
+                                                    <input type="hidden" name="idvalue" value="1582">
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Bank name</label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="bank_name" class="form-control" value="TMB" required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Branch Name</label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="branch" class="form-control" value="Dindigul " required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Account No</label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="acc_no" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="116100710400159" required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">IFSC </label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="ifsc" class="form-control" value="TMBL0000116" required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Account Holder </label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="acc_holder" class="form-control" value="G.Dinesh kumar" required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Google Pay Number </label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="google_pay" class="form-control" value="6383998925" required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 mb-4">
+                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Phonepe Number </label>
+                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                        <div class=" col-sm-7">
+                                                            <input type="text" name="phonepe" class="form-control" value="6383998925" required="" aria-required="true">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" name="usrbnkSub" class="btn btn-lg btn-block ulockd-btn-thm2 ">Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- Our Footer -->
+        <section class="ulockd-footer1 ulockd-pdng0">
+            <div class="container footer-padding">
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4">
+                        <div class="logo-widget tac-xxsd">
+                            <img src="admin/uploads/general-setting/logo5e45b8a49e744.jpg" alt="FINCASH TRADE">
+                        </div>
+                    </div>
+                    <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-8">
+                        <div class="font-icon-social text-right">
+                            <ul class="list-inline footer-font-icon">
+                                <li><a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                <!--							<li><a target="_blank" href=""><i class="fa fa-google"></i></a></li>-->
+                                <li><a target="_blank" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a target="_blank" href="https://www.instagram/"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="payment-card tac-xsd">
+                            <img class="pull-right fn-xsd" src="images/resource/payment.png" alt="payment.png">
+                        </div>
+                    </div>-->
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-7">
+                        <div class="widget-about">
+                            <h3>About Us</h3>
+                            Now you make an online investment in fixed deposits online from the comfort of your home. Research a bit to find out what are the best available options for you and start investing. All the best!
+                        </div>
+                    </div>
+                    <!--<div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4">
+                        <div class="link-widget">
+                            <h3>Quick Link</h3>
+                            <ul class="list-style-square">
+                                <li><a href="index.php"> Home</a></li>
+                                <li><a href="about-us.php"> About</a></li>
+                                <!--<li><a href="news.php"> News</a></li>
+                                <li><a href="events.php"> Events</a></li>
+                                <li><a href="contact-us.php"> Contact Us</a></li>
+                                <li><a href="privacy-policy.php"> Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>-->
+                    <!--
+                        <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+                            <div class="news-widget">
+                                <h3>Latest News</h3>
+                                <div class="ulockd-media-box">
+
+                                    <div class="media">
+                                        <div class="media-left pull-left">
+                                            <a href="news-details.php?id=3">
+                                                <img class="media-object" src="admin/uploads/news/news5d29ca4eb4962.jpg" width="70px" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Consectetuer adipisc...</h4>
+                                            <a href="news-details.php?id=3" class="post-date">13 Jul,2019</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+                                        <div class="media-left pull-left">
+                                            <a href="news-details.php?id=6">
+                                                <img class="media-object" src="admin/uploads/news/news5d29cba35c91d.jpg" width="70px" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Donec quam felis</h4>
+                                            <a href="news-details.php?id=6" class="post-date">15 Jul,2019</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+                                        <div class="media-left pull-left">
+                                            <a href="news-details.php?id=4">
+                                                <img class="media-object" src="admin/uploads/news/news5d29cad77c640.jpg" width="70px" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Aenean commodo ligul...</h4>
+                                            <a href="news-details.php?id=4" class="post-date">13 Jul,2019</a>
+                                        </div>
+                                    </div>
+                                                        </div>
+                            </div>
+                        </div>
+                        -->
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-5">
+
+                        <div class="ulockd-footer-newsletter">
+                            <h3 class="title">News Letter</h3>
+                            <p>Regardless of whether you need to stay in your own house, are searching for help with a more established relative.</p>
+                            <form class="ulockd-mailchimp" method="post" action="">
+                                <div class="input-group">
+                                    <input type="email" class="form-control input-md" placeholder="Your email" name="nwsltr_email" required="">
+                                    <span class="input-group-btn">
+                                        <button name="nwsltrSub" type="submit" class="btn btn-md"><i class="icon flaticon-right-arrow"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-6">
+                        <div class="mail-widget text-center">
+                            <span class="icon fa fa-envelope"></span>
+                            <h3>Mail Us</h3>
+                            <p>admin@fincashtrade.in</p>
+                        </div>
+                    </div>
+                    <!--<div class="col-xxs-12 col-xs-4 col-sm-4 col-md-4">
+                        <div class="call-widget text-center">
+                            <span class="icon fa fa-phone"></span>
+                            <h3>Call Us</h3>
+                            <p>NIL</p>
+                        </div>
+                    </div>-->
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-6">
+                        <div class="location-widget text-center">
+                            <span class="icon fa fa-map-signs"></span>
+                            <h3>Find Us</h3>
+                            <p>781,East car street, HKM buildings,Ulsoor,Bangalore- 560042</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ulockd-copy-right">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="color-white">FINCASH TRADE Copyright© 2020. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <a class="scrollToHome ulockd-bgthm" href="#"><i class="fa fa-angle-double-up"></i></a>
+
+        <!-- Wrapper End -->
+
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootsnav.js"></script>
+        <script type="text/javascript" src="js/parallax.js"></script>
+        <script type="text/javascript" src="js/scrollto.js"></script>
+        <script type="text/javascript" src="js/jquery-scrolltofixed-min.js"></script>
+        <script type="text/javascript" src="js/jquery.counterup.js"></script>
+        <script type="text/javascript" src="js/gallery.js"></script>
+        <script type="text/javascript" src="js/wow.min.js"></script>
+        <script type="text/javascript" src="js/slider.js"></script>
+        <script type="text/javascript" src="js/video-player.js"></script>
+        <script type="text/javascript" src="js/jquery.barfiller.js"></script>
+        <script type="text/javascript" src="js/jflickrfeed.min.js"></script>
+        <script type="text/javascript" src="js/timepicker.js"></script>
+        <script type="text/javascript" src="js/tweetie.js"></script>
+        <!-- Custom script for all pages -->
+
+        <script type="text/javascript" src="js/script.js"></script>
+        <script>
+function demo() {
+	alert("Access denied to Demo User");
+	return false;
+}
+function copyText() {
+	var copyText = document.getElementById("myInput");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Copied the text: " + copyText.value);
+}
+        </script>
+        <!-- Custom Validation-->
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+        <script src="admin/assets/js/custom-validation.js"></script>
+
+    </div>
+</body>
+</html>
