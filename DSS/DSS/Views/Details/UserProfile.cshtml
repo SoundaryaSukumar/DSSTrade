@@ -6,17 +6,16 @@
     <!-- css file -->
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/style.css">
-    <link rel="stylesheet" href="~/Content/dark.css">
+    <link rel="stylesheet" href="~/Content/theme-color.css">
     <!-- Responsive stylesheet -->
     <link rel="stylesheet" href="~/Content/responsive.css">
     <!-- Title -->
-    <title>FINCASH TRADE</title>
-    <!-- Favicon -->
-    <link href="admin/uploads/general-setting/favicon5e45ab001bde8.jpg" sizes="128x128" rel="shortcut icon" type="image/x-icon">
-    <!-- custom css-->
-    <link href="admin/assets/css/custom.css" rel="stylesheet" type="text/css">
+    <title>DSS - Door Step Solution</title>
 
-    <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/nuX0GNR875hMLA1LR7ayD9tc/recaptcha__en_gb.js"></script>
+    <link rel="stylesheet" href="~/Content/swc.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+    <script src="~/Scripts/swc.js"></script>
+    <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/nuX0GNR875hMLA1LR7ayD9tc/recaptcha__en.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
     <!--google recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -33,7 +32,7 @@
 <body>
     <div class="wrapper">
         <div class="wrapper">
-           
+
             <!-- Inner Pages Main Section -->
             <section class="ulockd-service-details inner-bg inner-sect">
                 <div class="container">
@@ -47,14 +46,6 @@
                                 <div id="sidebar">
                                     <ul class="list-unstyled menu-categories" id="accordionExample">
                                         <li class="menu">
-                                            <a href="user-dashboard.php" class="dropdown-toggle ">
-                                                <div class="">
-                                                    <i class="fa fa-tachometer "></i>
-                                                    <span>Dashboard</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="menu">
                                             <a href="#profile" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                                                 <div class="">
                                                     <i class="flaticon-person "></i>
@@ -65,13 +56,13 @@
                                                 </div>
                                             </a>
                                             <ul class="collapse submenu list-unstyled in" id="profile" data-parent="#accordionExample">
-                                                <li class="">
+                                                <li class="active">
                                                     <a href="my-profile.php"> My Profile </a>
                                                 </li>
                                                 <li class="">
                                                     <a href="edit-profile.php"> Edit Profile </a>
                                                 </li>
-                                                <li class="active">
+                                                <li class="">
                                                     <a href="bank-details.php"> Bank Details </a>
                                                 </li>
                                                 <li class="">
@@ -97,7 +88,6 @@
                                             </a>
                                         </li>
 
-                                        
                                         <li class="menu">
                                             <a href="withdrawal.php" class="dropdown-toggle ">
                                                 <div class="">
@@ -162,71 +152,173 @@
                                             <div class="widget-header">
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                        <h4>
-                                                            Bank Details
-                                                        </h4>
+                                                        <h4>My Profile</h4>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="widget-content widget-content-area">
-                                                <form name="usrbnkfrm" method="post" action="user-detail-sub.php" novalidate="novalidate">
-                                                    <input type="hidden" name="idvalue" value="1582">
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Bank name</label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="bank_name" class="form-control" value="TMB" required="" aria-required="true">
+                                                <!--<form>-->
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">
+                                                        First Name
+                                                    </label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>Dinesh</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Last Name</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>Kumar G</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Email</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>dineshin107@gmail.com</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Phone No.</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>6383998925</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Gender </label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>Male</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">DOB </label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>07-12-1997</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Invest Amount</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>0 INR</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Country</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>India</p>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">State</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>Tamil Nadu</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">City</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>Dindigul</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Address</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>
+                                                            Guna illam ,
+                                                            Sakthinayakanpatti,
+                                                            Periyakottai (p.o),
+                                                            M.M.Kovilur road,
+                                                            Dindigul : 624 306
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">ZIP Code</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>624306</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="widget-header">
+                                                    <div class="row">
+                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                            <h4>Bank Details</h4>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Branch Name</label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="branch" class="form-control" value="Dindigul " required="" aria-required="true">
-                                                        </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Bank Name</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>TMB</p>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Account No</label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="acc_no" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="116100710400159" required="" aria-required="true">
-                                                        </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Branch</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>Dindigul </p>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">IFSC </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="ifsc" class="form-control" value="TMBL0000116" required="" aria-required="true">
-                                                        </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Account No</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>116100710400159</p>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Account Holder </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="acc_holder" class="form-control" value="G.Dinesh kumar" required="" aria-required="true">
-                                                        </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">IFSC</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>TMBL0000116</p>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Google Pay Number </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="google_pay" class="form-control" value="6383998925" required="" aria-required="true">
-                                                        </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Account Holder</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>G.Dinesh kumar</p>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Phonepe Number </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="phonepe" class="form-control" value="6383998925" required="" aria-required="true">
-                                                        </div>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Google Pay</label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>6383998925</p>
                                                     </div>
-                                                    <button type="submit" name="usrbnkSub" class="btn btn-lg btn-block ulockd-btn-thm2 ">Submit</button>
-                                                </form>
+                                                </div>
+                                                <div class="form-group col-sm-6 mb-4">
+                                                    <label for="hEmail" class=" col-sm-4 col-form-label">Phonepe </label>
+                                                    <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
+                                                    <div class=" col-sm-7">
+                                                        <p>6383998925</p>
+                                                    </div>
+                                                </div>
+
+                                                <a href="edit-profile.php"><button class="btn btn-lg btn-block ulockd-btn-thm2 ">Edit Profile</button> </a>
+
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -238,26 +330,15 @@
         <section class="ulockd-footer1 ulockd-pdng0">
             <div class="container footer-padding">
                 <div class="row">
-                    <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4">
-                        <div class="logo-widget tac-xxsd">
-                            <img src="admin/uploads/general-setting/logo5e45b8a49e744.jpg" alt="FINCASH TRADE">
-                        </div>
-                    </div>
                     <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-8">
                         <div class="font-icon-social text-right">
                             <ul class="list-inline footer-font-icon">
                                 <li><a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <!--							<li><a target="_blank" href=""><i class="fa fa-google"></i></a></li>-->
                                 <li><a target="_blank" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
                                 <li><a target="_blank" href="https://www.instagram/"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
-                    <!--<div class="col-xs-12 col-sm-4 col-md-4">
-                    <div class="payment-card tac-xsd">
-                        <img class="pull-right fn-xsd" src="images/resource/payment.png" alt="payment.png">
-                    </div>
-                </div>-->
                 </div>
                 <hr>
                 <div class="row">
@@ -267,47 +348,6 @@
                             Now you make an online investment in fixed deposits online from the comfort of your home. Research a bit to find out what are the best available options for you and start investing. All the best!
                         </div>
                     </div>
-                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-5">
-
-                        <div class="ulockd-footer-newsletter">
-                            <h3 class="title">News Letter</h3>
-                            <p>Regardless of whether you need to stay in your own house, are searching for help with a more established relative.</p>
-                            <form class="ulockd-mailchimp" method="post" action="">
-                                <div class="input-group">
-                                    <input type="email" class="form-control input-md" placeholder="Your email" name="nwsltr_email" required="">
-                                    <span class="input-group-btn">
-                                        <button name="nwsltrSub" type="submit" class="btn btn-md"><i class="icon flaticon-right-arrow"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-6">
-                        <div class="mail-widget text-center">
-                            <span class="icon fa fa-envelope"></span>
-                            <h3>Mail Us</h3>
-                            <p>admin@fincashtrade.in</p>
-                        </div>
-                    </div>
-                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-6">
-                        <div class="location-widget text-center">
-                            <span class="icon fa fa-map-signs"></span>
-                            <h3>Find Us</h3>
-                            <p>781,East car street, HKM buildings,Ulsoor,Bangalore- 560042</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ulockd-copy-right">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="color-white">FINCASH TRADE Copyright© 2020. All rights reserved.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -315,7 +355,6 @@
         <a class="scrollToHome ulockd-bgthm" href="#"><i class="fa fa-angle-double-up"></i></a>
 
         <!-- Wrapper End -->
-
         <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
         <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="~/Scripts/bootsnav.js"></script>
@@ -349,7 +388,7 @@
         <!-- Custom Validation-->
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-        <script src="admin/assets/js/custom-validation.js"></script>
+        <script src="~/Scripts/custom-validation.js"></script>
 
     </div>
 </body>
