@@ -39,6 +39,32 @@
 <body>
     <div class="wrapper">
         <div class="wrapper">
+            <!--<div class="header-top style2 ulockd-bgthm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="welcm-ht ulockdtxt">
+                            <ul class="list-inline ulockd-mrgn60">
+                                <li class="ulockd-welcntxt color-white"> <strong class="fa fa-phone"></strong>NIL</li>
+                                <li class="ulockd-welcntxt color-white"> <strong class="fa fa-envelope"></strong>admin@fincashtrade.in</li>
+                                <!--<li class="ulockd-welcntxt color-white"> <strong class="fa fa-skype"></strong> yourdomain</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="welcm-ht text-right">
+                            <ul class="list-inline footer-font-icon ulockd-mrgn125 marbtm-3">
+                                                        <li><a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a target="_blank" href=""><i class="fa fa-google"></i></a></li>
+                                                        <li><a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                                        <li><a target="_blank" href="https://linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                                                    </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Styles -->
             <header class="header-nav">
                 <div class="main-header-nav navbar-scrolltofixed scroll-to-fixed-fixed" style="z-index: 1000; position: fixed; top: 0px; margin-left: 0px; width: 1423px; left: 0px;">
                     <div class="container">
@@ -201,14 +227,14 @@
                                                     <i class="fa fa-long-arrow-right"></i>
                                                 </div>
                                             </a>
-                                            <ul class="collapse submenu list-unstyled in" id="profile" data-parent="#accordionExample">
+                                            <ul class="collapse submenu list-unstyled " id="profile" data-parent="#accordionExample">
                                                 <li class="">
                                                     <a href="my-profile.php"> My Profile </a>
                                                 </li>
                                                 <li class="">
                                                     <a href="edit-profile.php"> Edit Profile </a>
                                                 </li>
-                                                <li class="active">
+                                                <li class="">
                                                     <a href="bank-details.php"> Bank Details </a>
                                                 </li>
                                                 <li class="">
@@ -220,7 +246,7 @@
                                             </ul>
                                         </li>
                                         <li class="menu">
-                                            <a href="my-investment.php" class="dropdown-toggle ">
+                                            <a href="my-investment.php" class="dropdown-toggle active">
                                                 <div class="">
                                                     <i class="flaticon-coins"></i>
                                                     <span>My Investment</span>
@@ -354,65 +380,37 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>
-                                                            Bank Details
+                                                            My Investment
                                                         </h4>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="widget-content widget-content-area">
-                                                <form name="usrbnkfrm" method="post" action="user-detail-sub.php" novalidate="novalidate">
-                                                    <input type="hidden" name="idvalue" value="1582">
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Bank name</label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="bank_name" class="form-control" value="TMB" required="" aria-required="true">
-                                                        </div>
+                                            <div class="widget-content widget-content-area mar-dip">
+                                                <div class="table-responsive" style="overflow-x:scroll;">
+                                                    <div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                        <div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example_length"><label>Show <select name="example_length" aria-controls="example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example"></label></div></div></div><div class="row">
+                                                            <div class="col-sm-12">
+                                                                <table id="example" class="table  table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="example_info">
+                                                                    <thead>
+                                                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="List: activate to sort column descending" style="width: 24px;">List</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Transaction ID: activate to sort column ascending" style="width: 304px;">Transaction ID</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Amount&amp;nbsp;(INR): activate to sort column ascending" style="width: 96px;">Amount&nbsp;(INR)</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 105px;">Date</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 65px;">Status</th></tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                        <tr role="row" class="odd">
+                                                                            <td class="sorting_1">1</td>
+                                                                            <td>TXcde543f5cd32e88a8c0d7237a0d0f2bb</td>
+                                                                            <td>1000</td>
+                                                                            <td>06-04-2020</td>
+                                                                            <td><p style="color:red">Expired</p><p></p></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 1 of 1 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="2" tabindex="0">Next</a></li></ul></div></div></div>
                                                     </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Branch Name</label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="branch" class="form-control" value="Dindigul " required="" aria-required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Account No</label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="acc_no" class="form-control" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" value="116100710400159" required="" aria-required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">IFSC </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="ifsc" class="form-control" value="TMBL0000116" required="" aria-required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Account Holder </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="acc_holder" class="form-control" value="G.Dinesh kumar" required="" aria-required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Google Pay Number </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="google_pay" class="form-control" value="6383998925" required="" aria-required="true">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 mb-4">
-                                                        <label for="hEmail" class=" col-sm-4 col-form-label">Phonepe Number </label>
-                                                        <label for="hEmail" class=" col-sm-1 col-form-label">:</label>
-                                                        <div class=" col-sm-7">
-                                                            <input type="text" name="phonepe" class="form-control" value="6383998925" required="" aria-required="true">
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" name="usrbnkSub" class="btn btn-lg btn-block ulockd-btn-thm2 ">Submit</button>
-                                                </form>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -479,18 +477,6 @@
 
                                 <div class="media">
                                     <div class="media-left pull-left">
-                                        <a href="news-details.php?id=3">
-                                            <img class="media-object" src="admin/uploads/news/news5d29ca4eb4962.jpg" width="70px" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Consectetuer adipisc...</h4>
-                                        <a href="news-details.php?id=3" class="post-date">13 Jul,2019</a>
-                                    </div>
-                                </div>
-
-                                <div class="media">
-                                    <div class="media-left pull-left">
                                         <a href="news-details.php?id=6">
                                             <img class="media-object" src="admin/uploads/news/news5d29cba35c91d.jpg" width="70px" alt="">
                                         </a>
@@ -510,6 +496,18 @@
                                     <div class="media-body">
                                         <h4 class="media-heading">Aenean commodo ligul...</h4>
                                         <a href="news-details.php?id=4" class="post-date">13 Jul,2019</a>
+                                    </div>
+                                </div>
+
+                                <div class="media">
+                                    <div class="media-left pull-left">
+                                        <a href="news-details.php?id=3">
+                                            <img class="media-object" src="admin/uploads/news/news5d29ca4eb4962.jpg" width="70px" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Consectetuer adipisc...</h4>
+                                        <a href="news-details.php?id=3" class="post-date">13 Jul,2019</a>
                                     </div>
                                 </div>
                                                     </div>
@@ -607,6 +605,17 @@
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
         <script src="admin/assets/js/custom-validation.js"></script>
 
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+        <script>
+            (function () {
+                $('#example').DataTable();
+            })();
+
+            (function () {
+                $('#trans_table').DataTable();
+            })();
+        </script>
     </div>
 </body>
 </html>
