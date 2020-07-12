@@ -21,12 +21,23 @@ namespace DSS.Controllers
             {
                 System.Web.Security.FormsAuthentication.SetAuthCookie(username,true);
                 Session["IsAuthenticated"] = true;
-                return RedirectToAction("UserProfile", "Details");
+                return RedirectToAction("Welcome", "Details");
             }
             else
             {
                 return RedirectToAction("Index","Home");
             }
         }
+        
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
     }
 }
