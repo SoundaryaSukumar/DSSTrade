@@ -21,5 +21,24 @@ namespace DSS.Controllers
             //    return RedirectToAction("Index","Home");
             //}
         }
+        public ActionResult EditProfile() {
+            return View();
+        }
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+        public ActionResult BankDetails()
+        {
+            return View();
+        }
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        public ActionResult MyInvestment()
+        {
+            return View();
+        }
     }
 }
