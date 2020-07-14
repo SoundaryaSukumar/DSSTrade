@@ -32,73 +32,76 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <form class="form-login" name="regfrm" method="post" action="reg-log-submit.php" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-md-12 text-center mb-4">
-                                    <h2 class="clr-black">
-                                        Register
-                                    </h2>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="text" name="sponsor_id" id="sid" onBlur="usrplacement(this.value);" class="form-control ht-46" value="" placeholder="Enter Referral Id" required />
-                                          
-                                        </div>
+                        @using (Html.BeginForm("RegisterValidation", "Login", FormMethod.Post))
+                        {
+                            <form class="form-login" name="regfrm" method="post" action="reg-log-submit.php" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12 text-center mb-4">
+                                        <h2 class="clr-black">
+                                            Register
+                                        </h2>
                                     </div>
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="text" name="fname" onkeydown="return ((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 8)" class="form-control ht-46" placeholder="Enter Your First Name" required />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="text" name="sponsor_name" id="sname" class="form-control ht-46" placeholder="Enter Referral Name" value="" />
-                                            <span> </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="text" name="lname" onkeydown="return ((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 8)" class="form-control ht-46" placeholder="Enter Your Last Name" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="password" name="pass" id="passId" class="form-control ht-46" placeholder="Enter Password" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="email" name="email" class="form-control ht-46" placeholder="Enter Email" required />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="password" name="cpass" class="form-control ht-46" placeholder="Enter Confirm Password" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group  mb-4">
-                                        <div class="">
-                                            <input type="text" name="phone" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control ht-46" placeholder="Enter Phone No." required />
-                                        </div>
-                                    </div>
-                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="text" name="sponsor_id" id="sid" onBlur="usrplacement(this.value);" class="form-control ht-46" value="" placeholder="Enter Referral Id" required />
 
-                                <div class="col-md-12 mrt13">
-                                    <input type="checkbox" name="agree" id="agree" required /><label class="clr-black padr-20">Click to accept our <a class="terms" target="_blank" href="terms-conditions.php">Terms & conditions.</a></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="text" name="fname" onkeydown="return ((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 8)" class="form-control ht-46" placeholder="Enter Your First Name" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="text" name="sponsor_name" id="sname" class="form-control ht-46" placeholder="Enter Referral Name" value="" />
+                                                <span> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="text" name="lname" onkeydown="return ((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 8)" class="form-control ht-46" placeholder="Enter Your Last Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="password" name="pass" id="passId" class="form-control ht-46" placeholder="Enter Password" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="email" name="email" class="form-control ht-46" placeholder="Enter Email" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="password" name="cpass" class="form-control ht-46" placeholder="Enter Confirm Password" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group  mb-4">
+                                            <div class="">
+                                                <input type="text" name="phone" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control ht-46" placeholder="Enter Phone No." required />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mrt13">
+                                        <input type="checkbox" name="agree" id="agree" required /><label class="clr-black padr-20">Click to accept our <a class="terms" target="_blank" href="terms-conditions.php">Terms & conditions.</a></label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" name="regfrmSub" class="btn btn-lg btn-gradient-danger btn-block btn-rounded mb-3">Register</button>
+                                        <a href="login.php" class="btn btn-lg btn-outline-dark btn-block btn-rounded mb-3"> Login</a>
+                                    </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <button type="submit" name="regfrmSub" class="btn btn-lg btn-gradient-danger btn-block btn-rounded mb-3">Register</button>
-                                    <a href="login.php" class="btn btn-lg btn-outline-dark btn-block btn-rounded mb-3"> Login</a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        }
                     </div>
                     <div class="col-md-3"></div>
                 </div>
