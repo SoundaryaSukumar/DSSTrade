@@ -37,7 +37,10 @@ namespace DSS.Controllers
                 {
                     System.Web.Security.FormsAuthentication.SetAuthCookie(username, true);
                     Session["IsAuthenticated"] = true;
-                    return RedirectToAction("Welcome", "Details");
+                    if(username.Equals("Admin786"))
+                        return RedirectToAction("Register", "Login");
+                    else
+                        return RedirectToAction("Welcome", "Details");
                 }
                 else
                 {
