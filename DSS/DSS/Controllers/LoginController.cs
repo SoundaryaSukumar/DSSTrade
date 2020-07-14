@@ -66,7 +66,7 @@ namespace DSS.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterValidation(string sponsor_id, string sponsor_name, string fname, string lname, string pass, string cpass, string email, string phone)
+        public ActionResult RegisterValidation(string sponsor_id, string sponsor_name, string fname, string lname, string pass, string cpass, string email, string phone, string aadharno, string panno)
         {
             MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=sab;Pwd=user;");
             MySqlCommand cmd;
@@ -75,7 +75,7 @@ namespace DSS.Controllers
             {
                 cmd = connection.CreateCommand();
                 //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
-                cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(@rid,@rname,@fname,@lname,@pass,@cpass,@email,@pno)";
+                cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo,AadharNo,PanNo)VALUES(@rid,@rname,@fname,@lname,@pass,@cpass,@email,@pno,@aadhar,@pan)";
                 cmd.Parameters.AddWithValue("@rid", sponsor_id);
                 cmd.Parameters.AddWithValue("@rname", sponsor_name);
                 cmd.Parameters.AddWithValue("@fname", fname);
@@ -84,6 +84,8 @@ namespace DSS.Controllers
                 cmd.Parameters.AddWithValue("@cpass", cpass);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@pno", phone);
+                cmd.Parameters.AddWithValue("@aadhar", aadharno);
+                cmd.Parameters.AddWithValue("@pan", panno);
                 cmd.ExecuteNonQuery();
                 return RedirectToAction("Login", "Login");
             }
