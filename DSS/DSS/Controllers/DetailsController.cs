@@ -40,5 +40,13 @@ namespace DSS.Controllers
         {
             return View();
         }
+        public ActionResult InvestmentUpdate()
+        {
+            return View();
+        }
+        public ActionResult BankDetailsUpdate()
+        {
+            return View();
+        }
     }
 }
