@@ -73,15 +73,24 @@ namespace DSS.Controllers
             connection.Open();
             try
             {
+                //cmdFetch = connection.CreateCommand();
+                //cmdFetch.CommandText = "SELECT UserId FROM register order by UserId DESC";
+                //cmdFetch.ExecuteNonQuery();
+                //MySqlDataReader sqlDataReader = cmdFetch.ExecuteReader();
+                //if (sqlDataReader.HasRows)
+                //{
+                //    var lastRow = sqlDataReader.RecordsAffected;
+                //    Debug.WriteLine(lastRow);
+                //}
                 cmd = connection.CreateCommand();
                 //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
-                cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo,AadharNo,PanNo)VALUES(@rid,@rname,@fname,@lname,@pass,@cpass,@email,@pno,@aadhar,@pan)";
+                cmd.CommandText = "INSERT INTO Register(UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo)VALUES(@uid,@rid,@rname,@fname,@lname,@pass,@email,@pno,@aadhar,@pan)";
                 cmd.Parameters.AddWithValue("@rid", sponsor_id);
                 cmd.Parameters.AddWithValue("@rname", sponsor_name);
                 cmd.Parameters.AddWithValue("@fname", fname);
                 cmd.Parameters.AddWithValue("@lname", lname);
                 cmd.Parameters.AddWithValue("@pass", pass);
-                cmd.Parameters.AddWithValue("@cpass", cpass);
+                cmd.Parameters.AddWithValue("@uid", "cfvdvg");
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@pno", phone);
                 cmd.Parameters.AddWithValue("@aadhar", aadharno);
