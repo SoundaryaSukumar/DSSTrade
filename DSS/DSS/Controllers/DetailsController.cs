@@ -85,5 +85,9 @@ namespace DSS.Controllers
                 }
             }
         }
+        public ActionResult Payout()
+        {
+            return View();
+        }
     }
 }
