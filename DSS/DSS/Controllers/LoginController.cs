@@ -23,7 +23,7 @@ namespace DSS.Controllers
         [HttpPost]
         public ActionResult LoginValidation(string username, string password)
         {
-            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=sab;Pwd=user;");
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
             MySqlCommand cmd;
             connection.Open();
             try
@@ -42,7 +42,7 @@ namespace DSS.Controllers
                     if(username.Equals("Admin786"))
                         return RedirectToAction("Register", "Login");
                     else
-                        return RedirectToAction("Welcome", "Details");
+                        return RedirectToAction("Welcome", "Details", new { username = username});
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace DSS.Controllers
         [HttpPost]
         public ActionResult RegisterValidation(string sponsor_id, string sponsor_name, string fname, string lname, string pass, string cpass, string email, string phone, string aadharno, string panno)
         {
-            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=sab;Pwd=user");
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user");
             MySqlCommand cmd;
             connection.Open();
             try

@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using MySql.Data;
 using System.Diagnostics;
 using System.Data;
+using DSS.Models;
 
 namespace DSS.Controllers
 {
@@ -15,7 +16,42 @@ namespace DSS.Controllers
         // GET: Details
         public ActionResult UserProfile()
         {
-            return View();
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+            MySqlCommand cmd;
+            connection.Open();
+            try
+            {
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "select userid,firstname,lastname,email,phoneno,aadharno,panno from register WHERE UserId=@userid";
+                cmd.Parameters.AddWithValue("@userid", userId);
+                cmd.ExecuteNonQuery();
+                Debug.WriteLine(cmd);
+                MySqlDataReader sqlDataReader = cmd.ExecuteReader();
+                var userProfile = new UserProfile();
+                while (sqlDataReader.Read())
+                {
+                    userProfile.UserId = sqlDataReader.GetString(0);
+                    userProfile.FirstName = sqlDataReader.GetString(1);
+                    userProfile.LastName = sqlDataReader.GetString(2);
+                    userProfile.Email = sqlDataReader.GetString(3);
+                    userProfile.PhoneNo = sqlDataReader.GetString(4);
+                    userProfile.AadharNo = sqlDataReader.GetString(5);
+                    userProfile.PanNo = sqlDataReader.GetString(6);
+                }
+                return View(userProfile);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+            
             //if (User.Identity.IsAuthenticated)
             //{
             //    return View();
@@ -28,7 +64,7 @@ namespace DSS.Controllers
         public ActionResult EditProfile() {
             return View();
         }
-        public ActionResult Welcome()
+        public ActionResult Welcome(string username)
         {
             return View();
         }
@@ -54,7 +90,7 @@ namespace DSS.Controllers
         }
         public ActionResult UpdateBankDetails(string user_id, string branch, string bank_name, string account_no, string ifsc, string gpay, string account_holder, string phpay)
         {
-            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=sab;Pwd=user;");
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=sound;Pwd=user;");
             MySqlCommand cmd;
             connection.Open();
             try
