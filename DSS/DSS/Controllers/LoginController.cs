@@ -8,12 +8,6 @@ using MySql.Data.MySqlClient;
 using MySql.Data;
 using System.Diagnostics;
 using System.Data;
-using System.Text.RegularExpressions;
-using System.Data.SqlClient;
-using System.Security.Principal;
-using System.Security.Claims;
-using System.IdentityModel;
-using System.Threading;
 
 namespace DSS.Controllers
 {

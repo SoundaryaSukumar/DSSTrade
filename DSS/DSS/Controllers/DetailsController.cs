@@ -82,7 +82,43 @@ namespace DSS.Controllers
         }
         public ActionResult ChangePassword()
         {
-            return View();
+            if (Session["userId"] != null)
+            {
+                return View();
+            } else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+        }
+        public ActionResult ChangepasswordValidation(String cur_pass, string new_pass)
+        {
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+            MySqlCommand cmd;
+            connection.Open();
+            try
+            {
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "update register set Password=@newpass WHERE UserId=@userid &&Password=@pass";
+                cmd.Parameters.AddWithValue("@userid", Session["userId"].ToString());
+                cmd.Parameters.AddWithValue("@pass", cur_pass);
+                cmd.Parameters.AddWithValue("@newpass", new_pass);
+                int isUpdateSuccess = cmd.ExecuteNonQuery();
+                
+
+                if(isUpdateSuccess > 0) 
+                {
+                    return RedirectToAction("Welcome", "Details");
+                } else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
         }
         public ActionResult MyInvestment()
         {
