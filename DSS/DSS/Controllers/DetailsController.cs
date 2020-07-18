@@ -231,6 +231,100 @@ namespace DSS.Controllers
                 return RedirectToAction("Login", "Login");
             }
         }
+        public ActionResult PayoutDetails()
+        {
+            if (Session["userId"] != null)
+            {
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "select transactionId, userId, packageCount, packageAmount, Date from investment";
+                    cmd.ExecuteNonQuery();
+                    AdminPayout adminPayout = new AdminPayout();
+                    MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
+                    DateTime checkDate;
+                    DateTime dateNow = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day);
+                    while (sqlDataReader1.Read())
+                    {
+                        checkDate = Convert.ToDateTime(sqlDataReader1.GetString(4));
+                        if (checkDate.Equals(dateNow.AddDays(-1)) || checkDate.Equals(dateNow.AddDays(-10)) || checkDate.Equals(dateNow.AddDays(-20)) ||
+                            checkDate.Equals(dateNow.AddDays(-30)) || checkDate.Equals(dateNow.AddDays(-60)) || checkDate.Equals(dateNow.AddDays(-90)) ||
+                            checkDate.Equals(dateNow.AddDays(-95)) || checkDate.Equals(dateNow.AddDays(-100)) || checkDate.Equals(dateNow.AddDays(-105)) ||
+                            checkDate.Equals(dateNow.AddDays(-110)) || checkDate.Equals(dateNow.AddDays(-115)) || checkDate.Equals(dateNow.AddDays(-120)) ||
+                            checkDate.Equals(dateNow.AddDays(-125)) || checkDate.Equals(dateNow.AddDays(-130)) || checkDate.Equals(dateNow.AddDays(-135)) ||
+                            checkDate.Equals(dateNow.AddDays(-140)) || checkDate.Equals(dateNow.AddDays(-145)) || checkDate.Equals(dateNow.AddDays(-150)) ||
+                            checkDate.Equals(dateNow.AddDays(-155)) || checkDate.Equals(dateNow.AddDays(-160)) || checkDate.Equals(dateNow.AddDays(-165)) ||
+                            checkDate.Equals(dateNow.AddDays(-170)) || checkDate.Equals(dateNow.AddDays(-175)) || checkDate.Equals(dateNow.AddDays(-180)))
+                        {
+
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Days = (int)(dateNow - checkDate).TotalDays;
+                            if (adminPayout.Days == 1)
+                                adminPayout.Amount = 50;
+                            else if (adminPayout.Days == 10)
+                                adminPayout.Amount = 100;
+                            else if (adminPayout.Days == 20)
+                                adminPayout.Amount = 150;
+                            else if (adminPayout.Days == 30)
+                                adminPayout.Amount = 200;
+                            else if (adminPayout.Days == 60)
+                                adminPayout.Amount = 250;
+                            else if (adminPayout.Days == 90)
+                                adminPayout.Amount = 300;
+                            else if (adminPayout.Days == 95)
+                                adminPayout.Amount = 350;
+                            else if (adminPayout.Days == 100)
+                                adminPayout.Amount = 400;
+                            else if (adminPayout.Days == 105)
+                                adminPayout.Amount = 500;
+                            else if (adminPayout.Days == 110)
+                                adminPayout.Amount = 600;
+                            else if (adminPayout.Days == 115)
+                                adminPayout.Amount = 700;
+                            else if (adminPayout.Days == 120)
+                                adminPayout.Amount = 800;
+                            else if (adminPayout.Days == 125)
+                                adminPayout.Amount = 900;
+                            else if (adminPayout.Days == 130)
+                                adminPayout.Amount = 1000;
+                            else if (adminPayout.Days == 135)
+                                adminPayout.Amount = 1100;
+                            else if (adminPayout.Days == 140)
+                                adminPayout.Amount = 1200;
+                            else if (adminPayout.Days == 145)
+                                adminPayout.Amount = 1300;
+                            else if (adminPayout.Days == 150)
+                                adminPayout.Amount = 1400;
+                            else if (adminPayout.Days == 155)
+                                adminPayout.Amount = 1500;
+                            else if (adminPayout.Days == 160)
+                                adminPayout.Amount = 1600;
+                            else if (adminPayout.Days == 165)
+                                adminPayout.Amount = 1700;
+                            else if (adminPayout.Days == 170)
+                                adminPayout.Amount = 1800;
+                            else if (adminPayout.Days == 175)
+                                adminPayout.Amount = 1900;
+                            else if (adminPayout.Days == 180)
+                                adminPayout.Amount = 2000;
+                        }
+                    }
+                    connection.Close();
+                    return View(adminPayout);
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+        }
         public ActionResult Logout()
         {
             Session.Clear();
