@@ -291,6 +291,7 @@ namespace DSS.Controllers
                     cmd = connection.CreateCommand();
                     cmd.CommandText = "select transactionId, userId, packageCount, packageAmount, Date from investment";
                     cmd.ExecuteNonQuery();
+                    List<AdminPayout> adminPayoutList = new List<AdminPayout>();
                     AdminPayout adminPayout = new AdminPayout();
                     MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
                     DateTime checkDate;
@@ -358,10 +359,12 @@ namespace DSS.Controllers
                                 adminPayout.Amount = 1900;
                             else if (adminPayout.Days == 180)
                                 adminPayout.Amount = 2000;
+                            adminPayoutList.Add(adminPayout);
                         }
                     }
                     connection.Close();
-                    return View(adminPayout);
+                    ViewBag.adminPayoutList = adminPayoutList.ToArray();
+                    return View(ViewBag);
                 }
                 catch (Exception)
                 {
