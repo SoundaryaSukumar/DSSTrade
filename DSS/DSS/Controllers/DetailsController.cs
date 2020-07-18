@@ -122,7 +122,53 @@ namespace DSS.Controllers
         }
         public ActionResult MyInvestment()
         {
-            return View();
+            if (Session["userId"] != null)
+            {
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                List<MyInvestment> investment = new List<MyInvestment>();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
+                    cmd.CommandText = "SELECT transactionid,packagecount,packageamount,date from investment where userid=@uid";
+                    cmd.Parameters.AddWithValue("@uid", Session["userId"].ToString());
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    int i = 1;
+                    while (sqlDataReader.Read())
+                    {
+                        investment.Add(new MyInvestment
+                        {
+                            list = i,
+                            transactionId = sqlDataReader.GetString(0),
+                            NoOfPackage = sqlDataReader.GetInt32(1),
+                            Amount = sqlDataReader.GetInt32(2) * sqlDataReader.GetInt32(1),
+                            transactionDate = sqlDataReader.GetString(3)
+                    });
+                        
+                        i++;
+                    }
+                    ViewBag.Investment = investment.ToArray();
+                    ViewBag.count = i-1;
+                    return View(ViewBag);
+                }
+                catch (Exception)
+                {
+                    return View();
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            } else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         public ActionResult InvestmentUpdate()
         {
@@ -167,9 +213,11 @@ namespace DSS.Controllers
         }
         public ActionResult Payout()
         {
+            var val = Request.QueryString;
+            int amount = Convert.ToInt32(val["count"]);
             List<Payout> payouts = new List<Payout>();
             int initialValue = 0;
-            int count = 2;
+            int count = Convert.ToInt32(val["count"]);
             for(int i=0; i<23; i++)
             {
                 String tableFinal = "table" + i;
@@ -330,6 +378,54 @@ namespace DSS.Controllers
             Session.Clear();
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult InvestmentAdd(string userid, string packages)
+        {
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user");
+            MySqlCommand cmd;
+            connection.Open();
+            try
+            {
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT TransactionId FROM Investment ORDER BY TransactionId DESC LIMIT 1;";
+                int count = cmd.ExecuteNonQuery();
+                MySqlDataReader sqldatareader = cmd.ExecuteReader();
+                string transaction= null;
+                DateTime aDate = DateTime.Now;
+                while (sqldatareader.Read())
+                {
+                    transaction = sqldatareader.GetString(0);
+                }
+                if (transaction == null)
+                {
+                    transaction = "TX78600000000001";
+                }
+                else
+                {
+                    String[] spearator = { "TX" };
+                    String[] strlist = transaction.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
+                    long finalVal = Convert.ToInt64(strlist[0]) + 1;
+                    Debug.WriteLine(finalVal);
+                    transaction = string.Concat("TX", finalVal);
+                    Debug.WriteLine(transaction);
+                }
+                connection.Close();
+                connection.Open();
+                //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
+                cmd.CommandText = "INSERT INTO Investment(TransactionId,userId,packageCount,PackageAmount,Date)VALUES(@tid,@uid,@packagecount,@packageamount,@date)";
+                cmd.Parameters.AddWithValue("@tid", transaction);
+                cmd.Parameters.AddWithValue("@uid", userid);
+                cmd.Parameters.AddWithValue("@packagecount", packages);
+                cmd.Parameters.AddWithValue("@packageamount", 1300);
+                cmd.Parameters.AddWithValue("@date", aDate.ToString("MM/dd/yyyy"));
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return RedirectToAction("Login", "Login");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Register", "Login");
+            }
         }
     }
 }
