@@ -14,7 +14,7 @@ namespace DSS.Controllers
     public class DetailsController : Controller
     {
         // GET: Details
-        public ActionResult UserProfile()
+        public ActionResult UserProfile(string userId)
         {
             MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
             MySqlCommand cmd;
