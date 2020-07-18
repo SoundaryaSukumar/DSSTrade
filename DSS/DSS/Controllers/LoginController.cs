@@ -10,6 +10,10 @@ using System.Diagnostics;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Security.Principal;
+using System.Security.Claims;
+using System.IdentityModel;
+using System.Threading;
 
 namespace DSS.Controllers
 {
@@ -37,12 +41,23 @@ namespace DSS.Controllers
                 MySqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
-                    System.Web.Security.FormsAuthentication.SetAuthCookie(username, true);
-                    Session["IsAuthenticated"] = true;
-                    if(username.Equals("Admin786"))
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(username, false);
+                    if (username.Equals("Admin786"))
                         return RedirectToAction("Register", "Login");
                     else
-                        return RedirectToAction("Welcome", "Details", new { username = username});
+                    {
+                        Session["userId"] = username;
+                        //GenericIdentity MyIdentity = new GenericIdentity(username, AuthenticationTypes.Password);
+                        //ClaimsIdentity objClaim = new ClaimsIdentity(AuthenticationTypes.Password, System.IdentityModel.Claims.ClaimTypes.Name, "Customer");
+                        //objClaim.AddClaim(new Claim(System.IdentityModel.Claims.ClaimTypes.Name, username));
+                        //objClaim.AddClaim(new Claim(ClaimTypes.AuthenticationMethod, "Level1"));
+                        //objClaim.AddClaim(new Claim(ClaimTypes.Name, username));
+                        //string[] Roles = { "Customer" };
+                        //GenericPrincipal MyPrincipal = new GenericPrincipal(objClaim, Roles);
+                        //IPrincipal Identity = (IPrincipal)MyPrincipal;
+                        //Thread.CurrentPrincipal = HttpContext.User = Identity;
+                        return RedirectToAction("Welcome", "Details");
+                    }
                 }
                 else
                 {

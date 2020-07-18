@@ -8,64 +8,71 @@ using MySql.Data;
 using System.Diagnostics;
 using System.Data;
 using DSS.Models;
-using MySqlX.XDevAPI.Relational;
 
 namespace DSS.Controllers
 {
     public class DetailsController : Controller
     {
         // GET: Details
-        public ActionResult UserProfile(string userId)
+        public ActionResult UserProfile()
         {
-            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
-            MySqlCommand cmd;
-            connection.Open();
-            try
+            if (Session["userId"] != null)
             {
-                cmd = connection.CreateCommand();
-                cmd.CommandText = "select userid,firstname,lastname,email,phoneno,aadharno,panno from register WHERE UserId=@userid";
-                cmd.Parameters.AddWithValue("@userid", userId);
-                cmd.ExecuteNonQuery();
-                Debug.WriteLine(cmd);
-                MySqlDataReader sqlDataReader = cmd.ExecuteReader();
-                var userProfile = new UserProfile();
-                while (sqlDataReader.Read())
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                try
                 {
-                    userProfile.UserId = sqlDataReader.GetString(0);
-                    userProfile.FirstName = sqlDataReader.GetString(1);
-                    userProfile.LastName = sqlDataReader.GetString(2);
-                    userProfile.Email = sqlDataReader.GetString(3);
-                    userProfile.PhoneNo = sqlDataReader.GetString(4);
-                    userProfile.AadharNo = sqlDataReader.GetString(5);
-                    userProfile.PanNo = sqlDataReader.GetString(6);
-                }
-                return View(userProfile);
-            }
-            catch (Exception)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "select userid,firstname,lastname,email,phoneno,aadharno,panno from register WHERE UserId=@userid";
+                    cmd.Parameters.AddWithValue("@userid", Session["userId"].ToString());
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    var userProfile = new UserProfile();
+                    while (sqlDataReader.Read())
+                    {
+                        userProfile.UserId = sqlDataReader.GetString(0);
+                        userProfile.FirstName = sqlDataReader.GetString(1);
+                        userProfile.LastName = sqlDataReader.GetString(2);
+                        userProfile.Email = sqlDataReader.GetString(3);
+                        userProfile.PhoneNo = sqlDataReader.GetString(4);
+                        userProfile.AadharNo = sqlDataReader.GetString(5);
+                        userProfile.PanNo = sqlDataReader.GetString(6);
+                    }
                     connection.Close();
+                    connection.Open();
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "select bankname,branchname,accountno,ifsc,accountholder,gpay,phphe from bankdetails WHERE UserId=@userid";
+                    cmd.Parameters.AddWithValue("@userid", Session["userId"].ToString());
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
+                    while (sqlDataReader1.Read())
+                    {
+                        userProfile.BankName = sqlDataReader1.GetString(0);
+                        userProfile.Branch = sqlDataReader1.GetString(1);
+                        userProfile.AccountNo = sqlDataReader1.GetString(2);
+                        userProfile.IFSC = sqlDataReader1.GetString(3);
+                        userProfile.AccountHolder = sqlDataReader1.GetString(4);
+                        userProfile.GooglePay = sqlDataReader1.GetString(5);
+                        userProfile.PhonePe = sqlDataReader1.GetString(6);
+                    }
+                    connection.Close();
+                    return View(userProfile);
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    return View();
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Index","Home");
-            //}
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
         public ActionResult EditProfile() {
             return View();
         }
-        public ActionResult Welcome(string username)
+        public ActionResult Welcome()
         {
             return View();
         }
@@ -145,6 +152,12 @@ namespace DSS.Controllers
             }
             ViewBag.payout = payouts.ToArray();
             return View(ViewBag);
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
