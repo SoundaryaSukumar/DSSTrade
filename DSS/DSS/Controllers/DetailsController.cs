@@ -8,6 +8,7 @@ using MySql.Data;
 using System.Diagnostics;
 using System.Data;
 using DSS.Models;
+using MySqlX.XDevAPI.Relational;
 
 namespace DSS.Controllers
 {
@@ -90,7 +91,7 @@ namespace DSS.Controllers
         }
         public ActionResult UpdateBankDetails(string user_id, string branch, string bank_name, string account_no, string ifsc, string gpay, string account_holder, string phpay)
         {
-            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=sound;Pwd=user;");
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
             MySqlCommand cmd;
             connection.Open();
             try
@@ -123,7 +124,27 @@ namespace DSS.Controllers
         }
         public ActionResult Payout()
         {
-            return View();
+            List<Payout> payouts = new List<Payout>();
+            int initialValue = 0;
+            int count = 2;
+            for(int i=0; i<23; i++)
+            {
+                String tableFinal = "table" + i;
+                if(i < 8)
+                {
+                    initialValue = initialValue + (50 * count);
+                } else
+                {
+                    initialValue = initialValue + (100 * count);
+                }
+                payouts.Add(new Payout
+                {
+                    table = initialValue
+                }) ;
+
+            }
+            ViewBag.payout = payouts.ToArray();
+            return View(ViewBag);
         }
     }
 }
