@@ -189,6 +189,48 @@ namespace DSS.Controllers
             ViewBag.payout = payouts.ToArray();
             return View(ViewBag);
         }
+        public ActionResult ViewBankDetail()
+        {
+            return View();
+        }
+        public ActionResult ViewBankInfo(string userid)
+        {
+            if (Session["userId"] != null)
+            {
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "select bankname,branchname,accountno,ifsc,accountholder,gpay,phphe from bankdetails WHERE UserId=@userid";
+                    cmd.Parameters.AddWithValue("@userid", userid);
+                    cmd.ExecuteNonQuery();
+                    UserProfile userProfile = new UserProfile();
+                    MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
+                    while (sqlDataReader1.Read())
+                    {
+                        userProfile.BankName = sqlDataReader1.GetString(0);
+                        userProfile.Branch = sqlDataReader1.GetString(1);
+                        userProfile.AccountNo = sqlDataReader1.GetString(2);
+                        userProfile.IFSC = sqlDataReader1.GetString(3);
+                        userProfile.AccountHolder = sqlDataReader1.GetString(4);
+                        userProfile.GooglePay = sqlDataReader1.GetString(5);
+                        userProfile.PhonePe = sqlDataReader1.GetString(6);
+                    }
+                    connection.Close();
+                    return View(userProfile);
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+        }
         public ActionResult Logout()
         {
             Session.Clear();

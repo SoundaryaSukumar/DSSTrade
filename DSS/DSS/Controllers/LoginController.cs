@@ -35,12 +35,12 @@ namespace DSS.Controllers
                 MySqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
+                    Session["userId"] = username;
                     System.Web.Security.FormsAuthentication.SetAuthCookie(username, false);
                     if (username.Equals("Admin786"))
                         return RedirectToAction("Register", "Login");
                     else
                     {
-                        Session["userId"] = username;
                         //GenericIdentity MyIdentity = new GenericIdentity(username, AuthenticationTypes.Password);
                         //ClaimsIdentity objClaim = new ClaimsIdentity(AuthenticationTypes.Password, System.IdentityModel.Claims.ClaimTypes.Name, "Customer");
                         //objClaim.AddClaim(new Claim(System.IdentityModel.Claims.ClaimTypes.Name, username));
