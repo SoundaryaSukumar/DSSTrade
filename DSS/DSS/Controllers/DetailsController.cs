@@ -300,7 +300,6 @@ namespace DSS.Controllers
                     cmd.CommandText = "select transactionId, userId, packageCount, packageAmount, Date from investment";
                     cmd.ExecuteNonQuery();
                     List<AdminPayout> adminPayoutList = new List<AdminPayout>();
-                    AdminPayout adminPayout = new AdminPayout();
                     MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
                     DateTime checkDate;
                     DateTime dateNow = new DateTime(DateTime.Now.Year,DateTime.Now.Month, DateTime.Now.Day);
@@ -317,57 +316,59 @@ namespace DSS.Controllers
                             checkDate.Equals(dateNow.AddDays(-155)) || checkDate.Equals(dateNow.AddDays(-160)) || checkDate.Equals(dateNow.AddDays(-165)) ||
                             checkDate.Equals(dateNow.AddDays(-170)) || checkDate.Equals(dateNow.AddDays(-175)) || checkDate.Equals(dateNow.AddDays(-180)))
                         {
+                            AdminPayout adminPayout = new AdminPayout();
                             count++;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
                             adminPayout.UserId = sqlDataReader1.GetString(1);
                             adminPayout.Days = (int)(dateNow - checkDate).TotalDays;
                             if (adminPayout.Days == 1)
-                                adminPayout.Amount = 50;
+                                adminPayout.Amount = 50 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 10)
-                                adminPayout.Amount = 100;
+                                adminPayout.Amount = 100 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 20)
-                                adminPayout.Amount = 150;
+                                adminPayout.Amount = 150 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 30)
-                                adminPayout.Amount = 200;
+                                adminPayout.Amount = 200 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 60)
-                                adminPayout.Amount = 250;
+                                adminPayout.Amount = 250 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 90)
-                                adminPayout.Amount = 300;
+                                adminPayout.Amount = 300 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 95)
-                                adminPayout.Amount = 350;
+                                adminPayout.Amount = 350 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 100)
-                                adminPayout.Amount = 400;
+                                adminPayout.Amount = 400 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 105)
-                                adminPayout.Amount = 500;
+                                adminPayout.Amount = 500 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 110)
-                                adminPayout.Amount = 600;
+                                adminPayout.Amount = 600 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 115)
-                                adminPayout.Amount = 700;
+                                adminPayout.Amount = 700 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 120)
-                                adminPayout.Amount = 800;
+                                adminPayout.Amount = 800 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 125)
-                                adminPayout.Amount = 900;
+                                adminPayout.Amount = 900 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 130)
-                                adminPayout.Amount = 1000;
+                                adminPayout.Amount = 1000 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 135)
-                                adminPayout.Amount = 1100;
+                                adminPayout.Amount = 1100 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 140)
-                                adminPayout.Amount = 1200;
+                                adminPayout.Amount = 1200 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 145)
-                                adminPayout.Amount = 1300;
+                                adminPayout.Amount = 1300 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 150)
-                                adminPayout.Amount = 1400;
+                                adminPayout.Amount = 1400 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 155)
-                                adminPayout.Amount = 1500;
+                                adminPayout.Amount = 1500 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 160)
-                                adminPayout.Amount = 1600;
+                                adminPayout.Amount = 1600 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 165)
-                                adminPayout.Amount = 1700;
+                                adminPayout.Amount = 1700 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 170)
-                                adminPayout.Amount = 1800;
+                                adminPayout.Amount = 1800 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 175)
-                                adminPayout.Amount = 1900;
+                                adminPayout.Amount = 1900 * sqlDataReader1.GetInt32(2);
                             else if (adminPayout.Days == 180)
-                                adminPayout.Amount = 2000;
+                                adminPayout.Amount = 2000 * sqlDataReader1.GetInt32(2);
                             adminPayoutList.Add(adminPayout);
                         }
                     }
