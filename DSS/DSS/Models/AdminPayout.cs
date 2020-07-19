@@ -9,6 +9,7 @@ namespace DSS.Models
     public class AdminPayout
     {
         public string UserId { set; get; }
+        public string TransactionId { set; get; }
         public int Days { set; get; }
         public int Amount { set; get; }
 
