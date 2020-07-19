@@ -8,5 +8,6 @@ namespace DSS.Models
     public class Payout
     {
         public int table { get; set; }
+        public string status { get; set; }
     }
 }

@@ -215,31 +215,51 @@ namespace DSS.Controllers
         public ActionResult Payout()
         {
             var val = Request.QueryString;
-            int amount = Convert.ToInt32(val["count"]);
             List<Payout> payouts = new List<Payout>();
             int initialValue = 0;
             var daysCount = 1;
+            DateTime dateNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime checkDate = Convert.ToDateTime(val["date"]);
             int count = Convert.ToInt32(val["count"]);
+            var sta = "Not Eligible";
             for(int i=0; i<23; i++)
             {
-                if(i < 8)
+                if(i==1)
+                {
+                    daysCount = 0;
+                }
+                if (i!=0 && i < 5)
+                {
+                    daysCount = daysCount + 10;
+                }
+                else
+                {
+                    daysCount = daysCount + 5;
+                }
+                if (i < 8)
                 {
                     initialValue = initialValue + (50 * count);
                 } else
                 {
                     initialValue = initialValue + (100 * count);
                 }
+                if (checkDate.Equals(dateNow.AddDays(-daysCount)))
+                {
+                    sta = "Eligible";
+                }
+                else if (checkDate < dateNow.AddDays(-daysCount))
+                {
+                    sta = "Withdrawn";
+                }
+                else if(checkDate > dateNow.AddDays(-daysCount))
+                {
+                    sta = "Not Eligible";
+                }
                 payouts.Add(new Payout
                 {
-                    table = initialValue
+                    table = initialValue,
+                    status = sta
                 }) ;
-                if(i< 5)
-                {
-                    daysCount = daysCount + 10;
-                } else
-                {
-                    daysCount = daysCount + 5;
-                }
 
             }
             ViewBag.payout = payouts.ToArray();
