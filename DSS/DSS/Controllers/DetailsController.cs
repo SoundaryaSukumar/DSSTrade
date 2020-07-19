@@ -273,6 +273,14 @@ namespace DSS.Controllers
                         weekCount++;
                     }
                 }
+                if (checkDate.AddDays(+(weekCount + counting)).DayOfWeek.ToString() == "Sunday")
+                {
+                    weekCount++;
+                }
+                if (checkDate.AddDays(+(weekCount + counting)).DayOfWeek.ToString() == "Saturday")
+                {
+                    weekCount = weekCount + 2;
+                }
                 return counting + weekCount;
             }
             ViewBag.payout = payouts.ToArray();
@@ -340,14 +348,14 @@ namespace DSS.Controllers
                     while (sqlDataReader1.Read())
                     {
                         checkDate = Convert.ToDateTime(sqlDataReader1.GetString(4));
-                        if (checkDate.Equals(dateNow.AddDays(-1)) || checkDate.Equals(dateNow.AddDays(-10)) || checkDate.Equals(dateNow.AddDays(-20)) ||
-                            checkDate.Equals(dateNow.AddDays(-30)) || checkDate.Equals(dateNow.AddDays(-60)) || checkDate.Equals(dateNow.AddDays(-90)) ||
-                            checkDate.Equals(dateNow.AddDays(-95)) || checkDate.Equals(dateNow.AddDays(-100)) || checkDate.Equals(dateNow.AddDays(-105)) ||
-                            checkDate.Equals(dateNow.AddDays(-110)) || checkDate.Equals(dateNow.AddDays(-115)) || checkDate.Equals(dateNow.AddDays(-120)) ||
-                            checkDate.Equals(dateNow.AddDays(-125)) || checkDate.Equals(dateNow.AddDays(-130)) || checkDate.Equals(dateNow.AddDays(-135)) ||
-                            checkDate.Equals(dateNow.AddDays(-140)) || checkDate.Equals(dateNow.AddDays(-145)) || checkDate.Equals(dateNow.AddDays(-150)) ||
-                            checkDate.Equals(dateNow.AddDays(-155)) || checkDate.Equals(dateNow.AddDays(-160)) || checkDate.Equals(dateNow.AddDays(-165)) ||
-                            checkDate.Equals(dateNow.AddDays(-170)) || checkDate.Equals(dateNow.AddDays(-175)) || checkDate.Equals(dateNow.AddDays(-180)))
+                        if (checkDate.Equals(dateNow.AddDays(-weekEndCount(1))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(10))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(20))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(30))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(60))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(90))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(95))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(100))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(105))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(110))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(115))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(120))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(125))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(130))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(135))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(140))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(145))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(150))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(155))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(160))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(165))) ||
+                            checkDate.Equals(dateNow.AddDays(-weekEndCount(170))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(175))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(180))))
                         {
                             AdminPayout adminPayout = new AdminPayout();
                             count++;
@@ -404,6 +412,27 @@ namespace DSS.Controllers
                                 adminPayout.Amount = 2000 * sqlDataReader1.GetInt32(2);
                             adminPayoutList.Add(adminPayout);
                         }
+                    }
+                    int weekEndCount(int counting)
+                    {
+                        DateTime currentDate = checkDate;
+                        var weekCount = 0;
+                        for (int i = 1; i <= counting; i++)
+                        {
+                            if (checkDate.AddDays(+i).DayOfWeek.ToString() == "Sunday" || checkDate.AddDays(+i).DayOfWeek.ToString() == "Saturday")
+                            {
+                                weekCount++;
+                            }
+                        }
+                        if(checkDate.AddDays(+(weekCount+counting)).DayOfWeek.ToString() == "Sunday")
+                        {
+                            weekCount++;
+                        }
+                        if (checkDate.AddDays(+(weekCount + counting)).DayOfWeek.ToString() == "Saturday")
+                        {
+                            weekCount = weekCount + 2;
+                        }
+                            return counting + weekCount;
                     }
                     connection.Close();
                     ViewBag.adminPayoutList = adminPayoutList.ToArray();
