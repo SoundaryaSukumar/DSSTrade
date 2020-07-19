@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Data;
 using DSS.Models;
 
+
 namespace DSS.Controllers
 {
     public class DetailsController : Controller
@@ -217,10 +218,10 @@ namespace DSS.Controllers
             int amount = Convert.ToInt32(val["count"]);
             List<Payout> payouts = new List<Payout>();
             int initialValue = 0;
+            var daysCount = 1;
             int count = Convert.ToInt32(val["count"]);
             for(int i=0; i<23; i++)
             {
-                String tableFinal = "table" + i;
                 if(i < 8)
                 {
                     initialValue = initialValue + (50 * count);
@@ -232,6 +233,13 @@ namespace DSS.Controllers
                 {
                     table = initialValue
                 }) ;
+                if(i< 5)
+                {
+                    daysCount = daysCount + 10;
+                } else
+                {
+                    daysCount = daysCount + 5;
+                }
 
             }
             ViewBag.payout = payouts.ToArray();
@@ -295,7 +303,8 @@ namespace DSS.Controllers
                     AdminPayout adminPayout = new AdminPayout();
                     MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
                     DateTime checkDate;
-                    DateTime dateNow = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day);
+                    DateTime dateNow = new DateTime(DateTime.Now.Year,DateTime.Now.Month, DateTime.Now.Day);
+                    int count = 0;
                     while (sqlDataReader1.Read())
                     {
                         checkDate = Convert.ToDateTime(sqlDataReader1.GetString(4));
@@ -308,7 +317,7 @@ namespace DSS.Controllers
                             checkDate.Equals(dateNow.AddDays(-155)) || checkDate.Equals(dateNow.AddDays(-160)) || checkDate.Equals(dateNow.AddDays(-165)) ||
                             checkDate.Equals(dateNow.AddDays(-170)) || checkDate.Equals(dateNow.AddDays(-175)) || checkDate.Equals(dateNow.AddDays(-180)))
                         {
-
+                            count++;
                             adminPayout.UserId = sqlDataReader1.GetString(1);
                             adminPayout.Days = (int)(dateNow - checkDate).TotalDays;
                             if (adminPayout.Days == 1)
@@ -364,6 +373,7 @@ namespace DSS.Controllers
                     }
                     connection.Close();
                     ViewBag.adminPayoutList = adminPayoutList.ToArray();
+                    ViewBag.count = count;
                     return View(ViewBag);
                 }
                 catch (Exception)
@@ -420,7 +430,7 @@ namespace DSS.Controllers
                 cmd.Parameters.AddWithValue("@uid", userid);
                 cmd.Parameters.AddWithValue("@packagecount", packages);
                 cmd.Parameters.AddWithValue("@packageamount", 1300);
-                cmd.Parameters.AddWithValue("@date", aDate.ToString("MM/dd/yyyy"));
+                cmd.Parameters.AddWithValue("@date", aDate.ToString("yyyy/MM/dd"));
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 return RedirectToAction("Login", "Login");
