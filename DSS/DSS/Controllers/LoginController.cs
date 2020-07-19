@@ -89,6 +89,7 @@ namespace DSS.Controllers
                 cmd.ExecuteNonQuery();
                 MySqlDataReader sqldatareader = cmd.ExecuteReader();
                 string user = null;
+                int finalVal = 0;
                 while (sqldatareader.Read())
                 {
                     user = sqldatareader.GetString(0);
@@ -100,15 +101,17 @@ namespace DSS.Controllers
                 {
                     String[] spearator = { "DSS" };
                     String[] strlist = user.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
-                    int finalVal = Convert.ToInt32(strlist[0]) + 1;
+                    finalVal = Convert.ToInt32(strlist[0]) + 1;
                     Debug.WriteLine(finalVal);
                     user = string.Concat("DSS", finalVal);
                     Debug.WriteLine(user);
                 }
+                int refVal = finalVal + 97531;
+                string refValId = string.Concat("REF", refVal , "DSS");
                 connection.Close();
                 connection.Open();
                 //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
-                cmd.CommandText = "INSERT INTO Register(UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo)VALUES(@uid,@rid,@rname,@fname,@lname,@pass,@email,@pno,@aadhar,@pan)";
+                cmd.CommandText = "INSERT INTO Register(UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo, MyRefferalId)VALUES(@uid,@rid,@rname,@fname,@lname,@pass,@email,@pno,@aadhar,@pan,@myref)";
                 cmd.Parameters.AddWithValue("@rid", sponsor_id);
                 cmd.Parameters.AddWithValue("@rname", sponsor_name);
                 cmd.Parameters.AddWithValue("@fname", fname);
@@ -119,6 +122,7 @@ namespace DSS.Controllers
                 cmd.Parameters.AddWithValue("@pno", phone);
                 cmd.Parameters.AddWithValue("@aadhar", aadharno);
                 cmd.Parameters.AddWithValue("@pan", panno);
+                cmd.Parameters.AddWithValue("@myref", refValId);
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 return RedirectToAction("Login", "Login");
