@@ -222,7 +222,7 @@ namespace DSS.Controllers
             DateTime checkDate = Convert.ToDateTime(val["date"]);
             int count = Convert.ToInt32(val["count"]);
             var sta = "Not Eligible";
-            for(int i=0; i<23; i++)
+            for (int i=0; i<23; i++)
             {
                 if(i==1)
                 {
@@ -243,15 +243,15 @@ namespace DSS.Controllers
                 {
                     initialValue = initialValue + (100 * count);
                 }
-                if (checkDate.Equals(dateNow.AddDays(-daysCount)))
+                if (checkDate.Equals(dateNow.AddDays(-weekEndCount(daysCount))))
                 {
                     sta = "Eligible";
                 }
-                else if (checkDate < dateNow.AddDays(-daysCount))
+                else if (checkDate < dateNow.AddDays(-weekEndCount(daysCount)))
                 {
                     sta = "Withdrawn";
                 }
-                else if(checkDate > dateNow.AddDays(-daysCount))
+                else if(checkDate > dateNow.AddDays(-weekEndCount(daysCount)))
                 {
                     sta = "Not Eligible";
                 }
@@ -261,6 +261,19 @@ namespace DSS.Controllers
                     status = sta
                 }) ;
 
+            }
+            int weekEndCount(int counting)
+            {
+                DateTime currentDate = checkDate;
+                var weekCount = 0;
+                for (int i=1; i<=counting; i++)
+                {
+                    if(checkDate.AddDays(+i).DayOfWeek.ToString()=="Sunday" || checkDate.AddDays(+i).DayOfWeek.ToString() == "Saturday")
+                    {
+                        weekCount++;
+                    }
+                }
+                return counting + weekCount;
             }
             ViewBag.payout = payouts.ToArray();
             return View(ViewBag);
