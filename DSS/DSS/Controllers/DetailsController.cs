@@ -147,7 +147,7 @@ namespace DSS.Controllers
                             NoOfPackage = sqlDataReader.GetInt32(1),
                             Amount = sqlDataReader.GetInt32(2) * sqlDataReader.GetInt32(1),
                             transactionDate = sqlDataReader.GetString(3)
-                    });
+                        }) ;
                         
                         i++;
                     }
@@ -799,5 +799,56 @@ namespace DSS.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+        public ActionResult InvestmentDetails()
+        {
+            if (Session["userId"] != null)
+            {
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                List<MyInvestment> investment = new List<MyInvestment>();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
+                    cmd.CommandText = "SELECT transactionid,packagecount,packageamount,date,userid from investment";
+                    cmd.Parameters.AddWithValue("@uid", Session["userId"].ToString());
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    int i = 1;
+                    while (sqlDataReader.Read())
+                    {
+                        investment.Add(new MyInvestment
+                        {
+                            list = i,
+                            userId = sqlDataReader.GetString(4),
+                            transactionId = sqlDataReader.GetString(0),
+                            NoOfPackage = sqlDataReader.GetInt32(1),
+                            Amount = sqlDataReader.GetInt32(2) * sqlDataReader.GetInt32(1),
+                            transactionDate = sqlDataReader.GetString(3)
+                        });
+
+                        i++;
+                    }
+                    ViewBag.Investment = investment.ToArray();
+                    ViewBag.count = i - 1;
+                    return View(ViewBag);
+                }
+                catch (Exception)
+                {
+                    return View();
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            } else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+}
     }
 }

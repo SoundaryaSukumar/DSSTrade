@@ -12,5 +12,6 @@ namespace DSS.Models
         public int NoOfPackage { get; set; }
         public int Amount { get; set; }
         public string transactionDate { get; set; }
+        public string userId { get; set; }
     }
 }
