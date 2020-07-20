@@ -348,68 +348,244 @@ namespace DSS.Controllers
                     while (sqlDataReader1.Read())
                     {
                         checkDate = Convert.ToDateTime(sqlDataReader1.GetString(4));
-                        if (checkDate.Equals(dateNow.AddDays(-weekEndCount(1))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(10))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(20))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(30))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(60))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(90))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(95))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(100))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(105))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(110))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(115))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(120))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(125))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(130))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(135))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(140))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(145))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(150))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(155))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(160))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(165))) ||
-                            checkDate.Equals(dateNow.AddDays(-weekEndCount(170))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(175))) || checkDate.Equals(dateNow.AddDays(-weekEndCount(180))))
+                        if (checkDate.Equals(dateNow.AddDays(-weekEndCount(1))))
                         {
                             AdminPayout adminPayout = new AdminPayout();
                             count++;
                             adminPayout.TransactionId = sqlDataReader1.GetString(0);
                             adminPayout.UserId = sqlDataReader1.GetString(1);
-                            adminPayout.Days = (int)(dateNow - checkDate).TotalDays;
-                            if (adminPayout.Days == 1)
-                                adminPayout.Amount = 50 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 10)
-                                adminPayout.Amount = 100 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 20)
-                                adminPayout.Amount = 150 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 30)
-                                adminPayout.Amount = 200 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 60)
-                                adminPayout.Amount = 250 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 90)
-                                adminPayout.Amount = 300 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 95)
-                                adminPayout.Amount = 350 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 100)
-                                adminPayout.Amount = 400 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 105)
-                                adminPayout.Amount = 500 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 110)
-                                adminPayout.Amount = 600 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 115)
-                                adminPayout.Amount = 700 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 120)
-                                adminPayout.Amount = 800 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 125)
-                                adminPayout.Amount = 900 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 130)
-                                adminPayout.Amount = 1000 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 135)
-                                adminPayout.Amount = 1100 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 140)
-                                adminPayout.Amount = 1200 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 145)
-                                adminPayout.Amount = 1300 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 150)
-                                adminPayout.Amount = 1400 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 155)
-                                adminPayout.Amount = 1500 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 160)
-                                adminPayout.Amount = 1600 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 165)
-                                adminPayout.Amount = 1700 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 170)
-                                adminPayout.Amount = 1800 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 175)
-                                adminPayout.Amount = 1900 * sqlDataReader1.GetInt32(2);
-                            else if (adminPayout.Days == 180)
-                                adminPayout.Amount = 2000 * sqlDataReader1.GetInt32(2);
+                            adminPayout.Days = 1;
+                            adminPayout.Amount = 50 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(10))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Days = 10;
+                            adminPayout.Amount = 100 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(20))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Days = 20;
+                            adminPayout.Amount = 150 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(30))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Days = 30;
+                            adminPayout.Amount = 200 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(60))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 60;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 250 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(90))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 90;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 300 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(95))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 95;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 350 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(100))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 100;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 400 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(105))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 105;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 500 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(110))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 110;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 600 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(115))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 115;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 700 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(120))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 120;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 800 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(125))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 125;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 900 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(130))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 130;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1000 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(135))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 135;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1100 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(140))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 140;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1200 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(145))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 145;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1300 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(150))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 150;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1400 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(155))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 155;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1500 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(160))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 160;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1600 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(165))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 165;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1700 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(170))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 170;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1800 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(175))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 175;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 1900 * sqlDataReader1.GetInt32(2);
+                            adminPayoutList.Add(adminPayout);
+                        }
+                        else if (checkDate.Equals(dateNow.AddDays(-weekEndCount(180))))
+                        {
+                            AdminPayout adminPayout = new AdminPayout();
+                            count++;
+                            adminPayout.Days = 180;
+                            adminPayout.TransactionId = sqlDataReader1.GetString(0);
+                            adminPayout.UserId = sqlDataReader1.GetString(1);
+                            adminPayout.Amount = 2000 * sqlDataReader1.GetInt32(2);
                             adminPayoutList.Add(adminPayout);
                         }
                     }
@@ -543,6 +719,62 @@ namespace DSS.Controllers
                         userProfile.LastName = sqlDataReader1.GetString(1);
                         userProfile.Email = sqlDataReader1.GetString(2);
                         userProfile.list = i;
+                        i++;
+                        userProfileList.Add(userProfile);
+                    }
+                    ViewBag.userProfile = userProfileList.ToArray();
+                    ViewBag.count = i - 1;
+                    return View(ViewBag);
+                }
+                catch (Exception)
+                {
+                    return View();
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public ActionResult CustomerDetails()
+        {
+            if (Session["userId"] != null)
+            {
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                List<UserProfile> userProfileList = new List<UserProfile>();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "SELECT UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo,MyRefferalId from register where userid != @admin";
+                    cmd.Parameters.AddWithValue("@admin", "Admin786");
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    int i = 1;
+                    while (sqlDataReader.Read())
+                    {
+                        UserProfile userProfile = new UserProfile();
+                        userProfile.UserId = sqlDataReader.GetString(0);
+                        userProfile.RefferalId = sqlDataReader.GetString(1);
+                        userProfile.RefferalName = sqlDataReader.GetString(2);
+                        userProfile.FirstName = sqlDataReader.GetString(3);
+                        userProfile.LastName = sqlDataReader.GetString(4);
+                        userProfile.Password = sqlDataReader.GetString(5);
+                        userProfile.Email = sqlDataReader.GetString(6);
+                        userProfile.PhoneNo = sqlDataReader.GetString(7);
+                        userProfile.AadharNo = sqlDataReader.GetString(8);
+                        userProfile.PanNo = sqlDataReader.GetString(9);
+                        userProfile.MyRefferalId = sqlDataReader.GetString(10);
+                        userProfile.list = i;
+
                         i++;
                         userProfileList.Add(userProfile);
                     }

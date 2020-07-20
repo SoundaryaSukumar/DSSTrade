@@ -111,7 +111,6 @@ namespace DSS.Controllers
                 string refValId = string.Concat("REF", refVal , "DSS");
                 connection.Close();
                 connection.Open();
-                //cmd.CommandText = "INSERT INTO Register(RefferalId,RefferalName,FirstName,LastName,Password,ConfirmPassword,Email,PhoneNo)VALUES(\"sd\",\"fdf\",\"dfdsf\",\"dfd\",\"sdf\",\"fdsf\",\"dfd\",\"dfdf\")";
                 cmd.CommandText = "INSERT INTO Register(UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo, MyRefferalId)VALUES(@uid,@rid,@rname,@fname,@lname,@pass,@email,@pno,@aadhar,@pan,@myref)";
                 cmd.Parameters.AddWithValue("@rid", sponsor_id);
                 cmd.Parameters.AddWithValue("@rname", sponsor_name);

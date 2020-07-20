@@ -16,6 +16,8 @@ namespace DSS.Models
         public string PanNo { get; set; }
         public string MyRefferalId { get; set; }
         public string Password { get; set; }
+        public string RefferalId { get; set; }
+        public string RefferalName { get; set; }
 
         //Bank Details
         public string BankName { get; set; }
