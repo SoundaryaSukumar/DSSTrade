@@ -474,5 +474,69 @@ namespace DSS.Controllers
                 return RedirectToAction("Register", "Login");
             }
         }
+        public ActionResult DisplayId(UserProfile userProfile)
+        {
+            return View(userProfile);
+        }
+        public ActionResult Downline()
+        {
+            if (Session["userId"] != null)
+            {
+                MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
+                MySqlCommand cmd;
+                connection.Open();
+                List<MyInvestment> investment = new List<MyInvestment>();
+                try
+                {
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "SELECT myrefferalId from register where userid=@uid";
+                    cmd.Parameters.AddWithValue("@uid", Session["userId"].ToString());
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    string refferalId = "";
+                    while (sqlDataReader.Read())
+                    {
+                        refferalId = sqlDataReader.GetString(0);
+                    }
+                    connection.Close();
+                    connection.Open();
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "SELECT firstname, lastname, email from register where refferalId=@rid";
+                    cmd.Parameters.AddWithValue("@rid", refferalId);
+                    cmd.ExecuteNonQuery();
+                    MySqlDataReader sqlDataReader1 = cmd.ExecuteReader();
+                    int i = 1;
+                    List<UserProfile> userProfileList = new List<UserProfile>();
+                    while (sqlDataReader1.Read())
+                    {
+                        UserProfile userProfile = new UserProfile();
+                        userProfile.FirstName = sqlDataReader1.GetString(0);
+                        userProfile.LastName = sqlDataReader1.GetString(1);
+                        userProfile.Email = sqlDataReader1.GetString(2);
+                        userProfile.list = i;
+                        i++;
+                        userProfileList.Add(userProfile);
+                    }
+                    ViewBag.userProfile = userProfileList.ToArray();
+                    ViewBag.count = i - 1;
+                    return View(ViewBag);
+                }
+                catch (Exception)
+                {
+                    return View();
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

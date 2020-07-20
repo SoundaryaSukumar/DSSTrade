@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using MySql.Data;
 using System.Diagnostics;
 using System.Data;
+using DSS.Models;
 
 namespace DSS.Controllers
 {
@@ -125,7 +126,11 @@ namespace DSS.Controllers
                 cmd.Parameters.AddWithValue("@myref", refValId);
                 cmd.ExecuteNonQuery();
                 connection.Close();
-                return RedirectToAction("Login", "Login");
+                UserProfile userProfile = new UserProfile();
+                userProfile.UserId = user;
+                userProfile.MyRefferalId = refValId;
+                userProfile.Password = pass;
+                return RedirectToAction("DisplayId", "Details", userProfile);
             }
             catch (Exception)
             {

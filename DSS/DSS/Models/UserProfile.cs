@@ -14,6 +14,8 @@ namespace DSS.Models
         public string PhoneNo { get; set; }
         public string AadharNo { get; set; }
         public string PanNo { get; set; }
+        public string MyRefferalId { get; set; }
+        public string Password { get; set; }
 
         //Bank Details
         public string BankName { get; set; }
@@ -23,5 +25,7 @@ namespace DSS.Models
         public string AccountHolder { get; set; }
         public string GooglePay { get; set; }
         public string PhonePe { get; set; }
+
+        public int list { get; set; }
     }
 }
