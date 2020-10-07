@@ -17,11 +17,13 @@ namespace DSS.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            Session.Clear();
             return View();
         }
         [HttpPost]
         public ActionResult LoginValidation(string username, string password)
         {
+            Session.Clear();
             MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user;");
             MySqlCommand cmd;
             connection.Open();
@@ -32,13 +34,13 @@ namespace DSS.Controllers
                 cmd.Parameters.AddWithValue("@user", username);
                 cmd.Parameters.AddWithValue("@pass", password);
                 cmd.ExecuteNonQuery();
-                Debug.WriteLine(cmd);
+                //Debug.WriteLine(cmd);
                 MySqlDataReader sqlDataReader = cmd.ExecuteReader();
                 if (sqlDataReader.HasRows)
                 {
                     Session["userId"] = username;
                     System.Web.Security.FormsAuthentication.SetAuthCookie(username, false);
-                    if (username.Equals("Admin786"))
+                    if (username.Equals("AdminDSS786"))
                         return RedirectToAction("Register", "Login");
                     else
                     {
@@ -56,7 +58,7 @@ namespace DSS.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Login");
                 }
             }
             catch(Exception)
@@ -74,66 +76,89 @@ namespace DSS.Controllers
         
         public ActionResult Register()
         {
-            return View();
+            if (Session["userId"] != null)
+            {
+                if ("AdminDSS786".Equals(Session["userId"].ToString()))
+                {
+                    return View();
+                }
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
         }
 
         [HttpPost]
         public ActionResult RegisterValidation(string sponsor_id, string sponsor_name, string fname, string lname, string pass, string cpass, string email, string phone, string aadharno, string panno)
         {
-            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user");
-            MySqlCommand cmd;
-            connection.Open();
             try
             {
-                cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT UserId FROM register ORDER BY UserId DESC LIMIT 1;";
-                cmd.ExecuteNonQuery();
-                MySqlDataReader sqldatareader = cmd.ExecuteReader();
-                string user = null;
-                int finalVal = 0;
-                while (sqldatareader.Read())
+                if (Session["userId"] != null)
                 {
-                    user = sqldatareader.GetString(0);
+                    if ("AdminDSS786".Equals(Session["userId"].ToString()))
+                    {
+                        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=dss;Uid=dsstrade;Pwd=user");
+                        MySqlCommand cmd;
+                        connection.Open();
+                        cmd = connection.CreateCommand();
+                        cmd.CommandText = "SELECT UserId FROM register ORDER BY UserId DESC LIMIT 1;";
+                        cmd.ExecuteNonQuery();
+                        MySqlDataReader sqldatareader = cmd.ExecuteReader();
+                        string user = null;
+                        int finalVal = 0;
+                        while (sqldatareader.Read())
+                        {
+                            user = sqldatareader.GetString(0);
+                        }
+                        if (user == null)
+                        {
+                            user = "DSS786000001";
+                        }
+                        else
+                        {
+                            String[] spearator = { "DSS" };
+                            String[] strlist = user.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
+                            finalVal = Convert.ToInt32(strlist[0]) + 1;
+                            Debug.WriteLine(finalVal);
+                            user = string.Concat("DSS", finalVal);
+                            Debug.WriteLine(user);
+                        }
+                        int refVal = finalVal + 97531;
+                        string refValId = string.Concat("REF", refVal, "DSS");
+                        connection.Close();
+                        connection.Open();
+                        cmd.CommandText = "INSERT INTO Register(UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo, MyRefferalId)VALUES(@uid,@rid,@rname,@fname,@lname,@pass,@email,@pno,@aadhar,@pan,@myref)";
+                        cmd.Parameters.AddWithValue("@rid", sponsor_id);
+                        cmd.Parameters.AddWithValue("@rname", sponsor_name);
+                        cmd.Parameters.AddWithValue("@fname", fname);
+                        cmd.Parameters.AddWithValue("@lname", lname);
+                        cmd.Parameters.AddWithValue("@pass", pass);
+                        cmd.Parameters.AddWithValue("@uid", user);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@pno", phone);
+                        cmd.Parameters.AddWithValue("@aadhar", aadharno);
+                        cmd.Parameters.AddWithValue("@pan", panno);
+                        cmd.Parameters.AddWithValue("@myref", refValId);
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+                        UserProfile userProfile = new UserProfile();
+                        userProfile.UserId = user;
+                        userProfile.MyRefferalId = refValId;
+                        userProfile.Password = pass;
+                        return RedirectToAction("DisplayId", "Details", userProfile);
+                        }
+                        return RedirectToAction("Login", "Login");
                 }
-                if (user == null)
+                else
                 {
-                    user = "DSS786000001";
-                } else
-                {
-                    String[] spearator = { "DSS" };
-                    String[] strlist = user.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
-                    finalVal = Convert.ToInt32(strlist[0]) + 1;
-                    Debug.WriteLine(finalVal);
-                    user = string.Concat("DSS", finalVal);
-                    Debug.WriteLine(user);
+                    return RedirectToAction("Login", "Login");
                 }
-                int refVal = finalVal + 97531;
-                string refValId = string.Concat("REF", refVal , "DSS");
-                connection.Close();
-                connection.Open();
-                cmd.CommandText = "INSERT INTO Register(UserId,RefferalId,RefferalName,FirstName,LastName,Password,Email,PhoneNo,AadharNo,PanNo, MyRefferalId)VALUES(@uid,@rid,@rname,@fname,@lname,@pass,@email,@pno,@aadhar,@pan,@myref)";
-                cmd.Parameters.AddWithValue("@rid", sponsor_id);
-                cmd.Parameters.AddWithValue("@rname", sponsor_name);
-                cmd.Parameters.AddWithValue("@fname", fname);
-                cmd.Parameters.AddWithValue("@lname", lname);
-                cmd.Parameters.AddWithValue("@pass", pass);
-                cmd.Parameters.AddWithValue("@uid", user);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@pno", phone);
-                cmd.Parameters.AddWithValue("@aadhar", aadharno);
-                cmd.Parameters.AddWithValue("@pan", panno);
-                cmd.Parameters.AddWithValue("@myref", refValId);
-                cmd.ExecuteNonQuery();
-                connection.Close();
-                UserProfile userProfile = new UserProfile();
-                userProfile.UserId = user;
-                userProfile.MyRefferalId = refValId;
-                userProfile.Password = pass;
-                return RedirectToAction("DisplayId", "Details", userProfile);
             }
             catch (Exception)
             {
-                return RedirectToAction("Register", "Login");
+                return RedirectToAction("Index", "Home");
             }
         }
 

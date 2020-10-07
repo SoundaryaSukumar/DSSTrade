@@ -10,18 +10,19 @@ namespace DSS.Controllers
     {
         public ActionResult Index()
         {
+            Session.Clear();
             return View();
         }
 
         public ActionResult About()
         {
-
+            Session.Clear();
             return View();
         }
 
         public ActionResult Contact()
         {
-
+            Session.Clear();
             return View();
         }
         
